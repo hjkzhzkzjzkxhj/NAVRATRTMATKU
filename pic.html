@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navratri 9 Din, 9 Rang – Tere Sang! 🪔</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Quicksand:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #fff5f8 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Floating elements background */
+        .bg-element {
+            position: fixed;
+            opacity: 0.05;
+            font-size: 8rem;
+            animation: drift 20s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-element:nth-child(1) { top: 10%; left: -10%; animation-delay: 0s; }
+        .bg-element:nth-child(2) { top: 50%; right: -10%; animation-delay: 5s; }
+        .bg-element:nth-child(3) { bottom: 10%; left: -10%; animation-delay: 10s; }
+
+        @keyframes drift {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(100px) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #d63384;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.1);
+        }
+
+        .subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #8e44ad;
+            font-weight: 300;
+        }
+
+        /* UNO Card Stack Layout */
+        .card-stack {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+
+        /* UNO Card Style */
+        .uno-card {
+            width: 240px;
+            height: 360px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 8px 32px rgba(214, 51, 132, 0.15);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            border: 8px solid white;
+        }
+
+        .uno-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 18px;
+            border: 3px solid #d63384;
+            z-index: 1;
+        }
+
+        .uno-card:hover {
+            transform: translateY(-20px) rotate(-5deg) scale(1.05);
+            box-shadow: 0 20px 60px rgba(214, 51, 132, 0.3);
+        }
+
+        /* Card Inner Content */
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 2;
+        }
+
+        /* Corner Numbers - UNO style */
+        .corner-number {
+            position: absolute;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: #d63384;
+            font-weight: bold;
+            z-index: 3;
+        }
+
+        .corner-number.top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .corner-number.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(180deg);
+        }
+
+        /* Photo Area */
+        .card-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.2);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .card-photo.placeholder {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+        }
+
+        /* Center Symbol - UNO style */
+        .center-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            opacity: 0.1;
+            color: #d63384;
+            z-index: 0;
+        }
+
+        /* Card Message */
+        .card-message {
+            background: rgba(214, 51, 132, 0.1);
+            padding: 10px 15px;
+            border-radius: 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: #d63384;
+            font-weight: 500;
+            margin-top: 20px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .uno-card:hover .card-message {
+            background: #d63384;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Action Text */
+        .action-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: #d63384;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .uno-card:hover .action-text {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(-5deg) scale(1.2);
+        }
+
+        /* Mobile Carousel Container */
+        .mobile-carousel {
+            display: none;
+            position: relative;
+            width: 100%;
+            overflow-x: auto;
+            padding: 20px 0;
+            margin-bottom: 3rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .mobile-carousel .uno-card {
+            flex: 0 0 240px;
+            scroll-snap-align: center;
+        }
+
+        /* Scroll Indicators */
+        .scroll-indicator {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(214, 51, 132, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            width: 24px;
+            border-radius: 4px;
+            background: #d63384;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: block;
+            margin: 3rem auto;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(45deg, #ff6b9d, #ff8fab);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+            transition: all 0.3s ease;
+            max-width: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .card-stack {
+                display: none;
+            }
+
+            .mobile-carousel {
+                display: block;
+            }
+
+            .scroll-indicator {
+                display: flex;
+            }
+
+            .uno-card {
+                width: 220px;
+                height: 330px;
+            }
+
+            .uno-card:hover {
+                transform: none;
+            }
+
+            .uno-card:active {
+                transform: scale(0.98);
+            }
+
+            .action-text {
+                display: none;
+            }
+
+            .card-photo {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .uno-card {
+                width: 200px;
+                height: 300px;
+            }
+
+            .card-photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .corner-number {
+                font-size: 1.5rem;
+            }
+
+            .card-message {
+                font-size: 0.75rem;
+                padding: 8px 12px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        .mobile-carousel::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .mobile-carousel::-webkit-scrollbar-track {
+            background: rgba(214, 51, 132, 0.1);
+            border-radius: 3px;
+        }
+
+        .mobile-carousel::-webkit-scrollbar-thumb {
+            background: rgba(214, 51, 132, 0.5);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-element">💖</div>
+    <div class="bg-element">✨</div>
+    <div class="bg-element">💕</div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Navratri 9 Din, 9 Rang – Tere Sang! 🪔</h1>
+            <p class="subtitle">Har din ek nayi Devi, har din ek naya plan – aur har din main, sirf tere liye! 😘</p>
+        </div>
+
+        <!-- Desktop Card Stack -->
+        <div class="card-stack" id="desktopCards">
+            <!-- Card 1 -->
+            <div class="uno-card">
+                <div class="center-symbol">🪔</div>
+                <div class="corner-number top-left">1</div>
+                <div class="corner-number bottom-right">1</div>
+                <div class="card-inner">
+                    <div class="card-photo placeholder">📸</div>
+                    <div class="card-message">Day 1: Shailputri – “Tum meri zindagi ki zameen ho — strong, grounded aur hamesha mere saath. Love you, my mountain soul.” 🗻💘</div>
+                </div>
+                <div class="action-text">Grounded</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="uno-card">
+                <div class="center-symbol">🪔</div>
+                <div class="corner-number top-left">2</div>
+                <div class="corner-number bottom-right">2</div>
+                <div class="card-inner">
+                    <div class="card-photo placeholder">💕</div>
+                    <div class="card-message">Day 2: Brahmacharini – “Tumhari shanti mein ek aag hai, aur main har din uss roshni mein jeeta hoon. Love you, meri deep soul.” ✨🙏</div>
+                </div>
+                <div class="action-text">Devoted</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="uno-card">
+                <div class="center-symbol">🪔</div>
+                <div class="corner-number top-left">3</div>
+                <div class="corner-number bottom-right">3</div>
+                <div class="card-inner">
+                    <div class="card-photo placeholder">🌹</div>
+                    <div class="card-message">Day 3: Chandraghanta – “Tumhaari aankhon mein chand hai, par dil mein sher. Love you, meri warrior moon.” 🐅🌙</div>
+                </div>
+                <div class="action-text">Fearless</div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="uno-card">
+                <div class="center-symbol">🪔</div>
+                <div class="corner-number top-left">4</div>
+                <div class="corner-number bottom-right">4</div>
+                <div class="card-inner">
+                    <div class="card-photo placeholder">✨</div>
+                    <div class="card-message">Day 4: Kushmanda – “Tum muskurati ho aur meri poori duniya roshan ho jaati hai. Love you, meri sunshine creator.” 💫💛</div>
+                </div>
+                <div class="action-text">Radiant</div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="uno-card">
+                <div class="center-symbol">🪔</div>
+                <div class="corner-number top-left">5</div>
+                <div class="corner-number bottom-right">5</div>
+                <div class="card-inner">
+                    <div class="card-photo placeholder">💖</div>
+                    <div class="card-message">Day 5: Skandamata – “Tum ho toh sab kuch safe lagta hai. Tum meri maa bhi ho, meri jaan bhi. Love you forever.” 🌻✨</div>
+                </div>
+                <div class="action-text">Nurturing</div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="uno-card">
+                <div class="center-symbol">🪔</div>
+                <div class="corner-number top-left">6</div>
+                <div class="corner-number bottom-right">6</div>
+                <div class="card-inner">
+                    <div class="card-photo placeholder">🦋</div>
+                    <div class="card-message">Day 6: Katyayani – “Jab tum mere saath ho, main duniya se nahi darta. Love you, meri lion-hearted queen.” 🔥🦁</div>
+                </div>
+                <div class="action-text">Powerful</div>
+            </div>
+            <div class="uno-card">
+                <div class="center-symbol">🪔</div>
+                <div class="corner-number top-left">7</div>
+                <div class="corner-number bottom-right">7</div>
+                <div class="card-inner">
+                    <div class="card-photo placeholder">🦋</div>
+                    <div class="card-message">Day 7: Kalaratri – “Tum andheron se nahi darti, tum unka raasta ho. Love you, meri fearless raat.” 🖤⚡</div>
+                </div>
+                <div class="action-text">Unshakable</div>
+            </div>
+
+            <div class="uno-card">
+                <div class="center-symbol">🪔</div>
+                <div class="corner-number top-left">8</div>
+                <div class="corner-number bottom-right">8</div>
+                <div class="card-inner">
+                    <div class="card-photo placeholder">🦋</div>
+                    <div class="card-message">Day 8: Mahagauri – “Tum itni saaf ho ki tumhari aankhon mein main apna sach dekh leta hoon. Love you, meri softlight devi.” 🤍🌷</div>
+                </div>
+                <div class="action-text">Pure</div>
+            </div>
+
+            <div class="uno-card">
+                <div class="center-symbol">🪔</div>
+                <div class="corner-number top-left">9</div>
+                <div class="corner-number bottom-right">9</div>
+                <div class="card-inner">
+                    <div class="card-photo placeholder">🦋</div>
+                    <div class="card-message">Day 9: Siddhidatri – “Tum meri wish nahi ho, tum meri poori siddhi ho. Tum mein sab kuch hai. Love you, my divine ending.” 👑💜</div>
+                </div>
+                <div class="action-text">Complete</div>
+            </div>
+
+            <!-- Card 6 -->
+            
+
+            
+        </div>
+
+        <!-- Mobile Carousel -->
+        <div class="mobile-carousel" id="mobileCarousel">
+            <div class="carousel-track">
+                <!-- Card 1 -->
+                <div class="uno-card">
+                    <div class="center-symbol">🪔</div>
+                    <div class="corner-number top-left">1</div>
+                    <div class="corner-number bottom-right">1</div>
+                    <div class="card-inner">
+                        <div class="card-photo placeholder">📸</div>
+                        <div class="card-message">Day 1: Shailputri – Orange look, tu meri energy booster! Chal date pe, Navratri ki shuruaat tere saath. 😍</div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="uno-card">
+                    <div class="center-symbol">🪔</div>
+                    <div class="corner-number top-left">2</div>
+                    <div class="corner-number bottom-right">2</div>
+                    <div class="card-inner">
+                        <div class="card-photo placeholder">💕</div>
+                        <div class="card-message">Day 2: Brahmacharini – Royal blue, tu queen hai! Aaj fasting, par pyaar full-on. Teri smile dekh ke sab bhool jaun! 😉</div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="uno-card">
+                    <div class="center-symbol">🪔</div>
+                    <div class="corner-number top-left">3</div>
+                    <div class="corner-number bottom-right">3</div>
+                    <div class="card-inner">
+                        <div class="card-photo placeholder">🌹</div>
+                        <div class="card-message">Day 3: Chandraghanta – Yellow dress, tu meri sunshine! Chal garba night, main bas tujhe hi dekhun. ☀️</div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="uno-card">
+                    <div class="center-symbol">🪔</div>
+                    <div class="corner-number top-left">4</div>
+                    <div class="corner-number bottom-right">4</div>
+                    <div class="card-inner">
+                        <div class="card-photo placeholder">✨</div>
+                        <div class="card-message">Day 4: Kushmanda – Green outfit, tu meri fresh wali feeling! Chal mandir, prasad baantenge aur selfie lenge. 😁</div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="uno-card">
+                    <div class="center-symbol">🪔</div>
+                    <div class="corner-number top-left">5</div>
+                    <div class="corner-number bottom-right">5</div>
+                    <div class="card-inner">
+                        <div class="card-photo placeholder">💖</div>
+                        <div class="card-message">Day 5: Skandamata – Grey look, tu classy! Chal movie night, popcorn bhi, pyaar bhi. Teri baaton mein magic hai! ✨</div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="uno-card">
+                    <div class="center-symbol">🪔</div>
+                    <div class="corner-number top-left">6</div>
+                    <div class="corner-number bottom-right">6</div>
+                    <div class="card-inner">
+                        <div class="card-photo placeholder">🦋</div>
+                        <div class="card-message">Day 6: Katyayani – Orange again, double dhamaka! Chal dandiya, main teri partner, tu meri crush! 💃🕺</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Scroll Indicators -->
+        <div class="scroll-indicator" id="scrollIndicator">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <a href="last.html" class="cta-button"> Ab idhar Click Karoo 💖</a>
+    </div>
+
+      <audio id="bgMusic" loop>
+  <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+    <script>
+        // Mobile carousel scroll indicator
+        const carousel = document.getElementById('mobileCarousel');
+        const dots = document.querySelectorAll('.dot');
+        const cards = document.querySelectorAll('.mobile-carousel .uno-card');
+
+        if (carousel) {
+            carousel.addEventListener('scroll', () => {
+                const scrollLeft = carousel.scrollLeft;
+                const cardWidth = cards[0].offsetWidth + 24; // card width + gap
+                const activeIndex = Math.round(scrollLeft / cardWidth);
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeIndex);
+                });
+            });
+        }
+
+        // Card interaction effects
+        const allCards = document.querySelectorAll('.uno-card');
+        
+        allCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Create ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.background = 'rgba(214, 51, 132, 0.5)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'translate(-50%, -50%)';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                
+                const rect = this.getBoundingClientRect();
+                ripple.style.left = (event.clientX - rect.left) + 'px';
+                ripple.style.top = (event.clientY - rect.top) + 'px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    width: 200px;
+                    height: 200px;
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Function to add photos
+        function addPhoto(cardNumber, imageUrl) {
+            const desktopPhotos = document.querySelectorAll('#desktopCards .card-photo');
+            const mobilePhotos = document.querySelectorAll('#mobileCarousel .card-photo');
+            // Now allow 1-9
+            if (cardNumber >= 1 && cardNumber <= 9) {
+                const index = cardNumber - 1;
+                // Update desktop version
+                if (desktopPhotos[index]) {
+                    desktopPhotos[index].style.backgroundImage = `url('${imageUrl}')`;
+                    desktopPhotos[index].classList.remove('placeholder');
+                    desktopPhotos[index].textContent = '';
+                }
+                // Update mobile version
+                if (mobilePhotos[index]) {
+                    mobilePhotos[index].style.backgroundImage = `url('${imageUrl}')`;
+                    mobilePhotos[index].classList.remove('placeholder');
+                    mobilePhotos[index].textContent = '';
+                }
+            }
+        }
+
+        // Example usage - Add your photos
+        addPhoto(1, 'images/pic1.jpg');
+        addPhoto(2, 'images/pic2.jpg');
+        addPhoto(3, 'images/pic3.jpg');
+        addPhoto(4, 'images/pic4.jpg');
+        addPhoto(5, 'images/pic5.jpg');
+        addPhoto(6, 'images/pic6.jpg');
+        addPhoto(7, 'images/pic7.jpg');
+        addPhoto(8, 'images/pic8.jpg');
+        addPhoto(9, 'images/pic9.jpg');
+           
+
+        let musicStarted = false;
+
+function startMusic() {
+  if (musicStarted) return;
+
+  const bgMusic = document.getElementById("bgMusic");
+  if (bgMusic) {
+    bgMusic.volume = 0.5;
+    bgMusic.play().then(() => {
+      musicStarted = true;
+      console.log("Music started");
+    }).catch((err) => {
+      console.warn("Music autoplay blocked:", err);
+    });
+  }
+}
+
+document.body.addEventListener("click", startMusic, { once: true });
+document.body.addEventListener("touchstart", startMusic, { once: true });
+    </script>
+</body>
+</html>
